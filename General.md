@@ -1,5 +1,5 @@
-#####USER ######
-###add a non sudo user
+##### USER for podman ######
+### add a non sudo user
 On Fedora / RHEL systems (using useradd):
 sudo useradd -m -s /bin/bash user
 sudo passwd user
