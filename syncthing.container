@@ -29,8 +29,10 @@ PublishPort=21027:21027/udp
 WantedBy=multi-user.target default.target
 
 -----------------------------------------------------------
+
 #### mightneed 
 podman unshare
 chown podman/syncthing/
+systemctl --user start syncthing.service
 
 #### chmod -R 777 /media/
