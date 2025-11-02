@@ -1,0 +1,38 @@
+### Quadlet ##
+
+quatlet uses systemd
+~/.config/containers/systemd/<container_name>.container
+
+### example for jellyfin ###
+# ~/.config/containers/systemd/jellyfin.container
+------------------------------------------------------------------
+[Unit]
+Description=Jellyfin Media Server (Podman Quadlet)
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+ContainerName=jellyfin
+Image=docker.io/jellyfin/jellyfin:latest
+Network=host
+UserNS=keep-id
+Volume=/home/poduser/podman/jellyfin/config:/config:Z
+Volume=/home/poduser/podman/jellyfin/cache:/cache:Z
+Volume=/home/poduser/bin/ffmpeg:/usr/local/bin/ffmpeg:ro
+Volume=/home/poduser/bin/ffprobe:/usr/local/bin/ffprobe:ro
+Volume=/media/movie:/media/movie:ro,z
+Volume=/media/tv:/media/tv:ro,z
+Environment=TZ=Asia/Singapore
+
+[Service]
+Restart=always
+TimeoutStopSec=70
+
+[Install]
+WantedBy=default.target
+---------------------------------------------------------
+#### reload ##
+systemctl --user daemon-reload
+systemctl --user enable --now jellyfin.container
+#### you might get error but it still works ###
+### test after reboot ##
