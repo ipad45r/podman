@@ -33,6 +33,7 @@ TimeoutStopSec=70
 WantedBy=default.target
 ---------------------------------------------------------
 #### reload ##
+sudo chcon -Rt container_file_t /media/hdd1
 systemctl --user daemon-reload
 systemctl --user enable --now jellyfin.container
 #### you might get error but it still works ###
