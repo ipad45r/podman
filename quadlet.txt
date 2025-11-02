@@ -15,6 +15,7 @@ Wants=network-online.target
 ContainerName=jellyfin
 Image=docker.io/jellyfin/jellyfin:latest
 Network=host
+SecurityLabelDisable=true
 UserNS=keep-id
 Volume=/home/poduser/podman/jellyfin/config:/config:Z
 Volume=/home/poduser/podman/jellyfin/cache:/cache:Z
