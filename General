@@ -1,0 +1,4 @@
+when using podman on non root, publish port is not auto, on your sudo account
+
+eg for jellyfin
+sudo firewall-cmd --add-port=8096/tcp --permanent
